@@ -9,6 +9,3 @@
 /api/composer.lock
 /api/vendor/*
 .DS_Store
-.sublime-gulp.cache
-selecao.sublime-project
-selecao.sublime-workspace
