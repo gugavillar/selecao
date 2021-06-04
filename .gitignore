@@ -8,4 +8,5 @@
 /css/libs/*
 /api/composer.lock
 /api/vendor/*
+/api/conection.php
 .DS_Store
