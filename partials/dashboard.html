@@ -1,0 +1,24 @@
+<div class="container">
+	<h5 class="center-align">Dashboard</h5>
+	<div class="row center-align">
+		<p class="flow-text">Total de candidatos inscritos - <b data-ng-bind="dash.total_geral"></strong></p>
+	</div>
+	<div class="row">
+		<table class="responsive-table highlight centered">
+			<thead>
+				<tr>
+					<th>Cargo</th>
+					<th>Quantidade</th>
+					<th>%</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="item in dash.candidatos | orderBy:'nome_cargo'">
+					<td data-ng-bind="item.nome_cargo"></td>
+					<td data-ng-bind="item.total_cargo"></td>
+					<td data-ng-bind="item.total_cargo | Percentagem:dash.total_geral:2"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

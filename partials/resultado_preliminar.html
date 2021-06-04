@@ -1,0 +1,56 @@
+<div class="box">
+	<h5 class="center-align noprint">Resultado Preliminar da Seleção Simplificada</h5>
+	<form name="formRelatorio" class="noprint" data-ng-submit="resultado.gerar()">
+		<div class="row">
+			<div class="input-field col s12 m8 l8">
+				<select id="cargo_candidato" name="cargo_candidato" data-ng-model="resultado.dados.id_cargo"
+					data-ng-options="cargo.id_cargo as cargo.nome_cargo for cargo in resultado.cargos | orderBy: 'nome_cargo'"
+					required>
+					<option value="">Escolha o Cargo</option>
+				</select>
+				<label for="cargo_candidato">Cargo</label>
+			</div>
+			<div class="input-field col s12 m4 l4">
+				<select id="deficiente_candidato" name="deficiente_candidato"
+					data-ng-model="resultado.dados.deficiente_candidato" required>
+					<option value="" disabled selected>Escolha a opção</option>
+					<option value="1">Sim</option>
+					<option value="2">Não</option>
+				</select>
+				<label for="deficiente_candidato">Vaga PCD</label>
+			</div>
+		</div>
+		<div class="row right-align">
+			<button class="waves-effect waves-light btn blue darken-2" data-ng-disabled="formRelatorio.$invalid"><i
+					class="material-icons right">send</i>Gerar</button>
+		</div>
+	</form>
+	<div data-ng-show="resultado.listaCandidatos" class="row center-align">
+		<img class="responsive-img img-protocolo" src="dist/img/pmg.png" alt="Prefeitura de Gravatá">
+		<h4>Resultado Preliminar da Seleção Simplificada<br>{{resultado.dados.data | date:'dd/MM/yyyy'}}</h4>
+		<h6>{{resultado.dados.nome_cargo}}<br><span data-ng-if="resultado.dados.deficiente_candidato === '1'">Vagas
+				PCD</span><span data-ng-if="resultado.dados.deficiente_candidato === '2'">Vagas de ampla
+				concorrência</span></h6>
+	</div>
+	<div class="col s12 m12 l12">
+		<table class="responsive-table highlight centered" data-ng-show="resultado.listaCandidatos.length >= 1">
+			<thead>
+				<tr>
+					<th>Inscrição</th>
+					<th>Candidato</th>
+					<th>Classificação</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="item in resultado.listaCandidatos">
+					<td data-ng-bind="item.numero_inscricao_candidato"></td>
+					<td data-ng-bind="item.nome_candidato"></td>
+					<td data-ng-bind="item.status_avaliacao | Classificacao"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-ng-show="resultado.listaCandidatos.length === 0" class="col s12 m12 l12">
+		<h5 class="center-align">Não houve inscrições para o cargo</h5>
+	</div>
+</div>

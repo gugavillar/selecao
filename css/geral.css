@@ -1,0 +1,14 @@
+.pagination li.active a {
+	background-color: #1976d2;
+	border-radius: 50%;
+}
+
+.pagination li.active {
+	background-color: #1976d2;
+	border-radius: 50%
+}
+
+div.box {
+	width: 90%;
+	margin: 0 auto;
+}

@@ -1,0 +1,39 @@
+<div class="container noprint">
+	<h5 class="center-align">Responder Recurso do Candidato</h5>
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<p><strong>Inscrição:</strong> {{recurso.candidato.numero_inscricao_candidato}}</p>
+			<p><strong>Cargo:</strong> {{recurso.candidato.nome_cargo}}</p>
+			<p><strong>Nome:</strong> {{recurso.candidato.nome_candidato}} <strong>CPF:</strong>
+				{{recurso.candidato.cpf_candidato | CPF}}
+			</p>
+			<hr />
+		</div>
+	</div>
+	<form name="formRecurso" data-ng-submit="recurso.send()">
+		<div class="row">
+			<div class="input-field col s12 m6 l6 offset-m3 offset-l3">
+				<select id="status_recurso" name="status_recurso" data-ng-model="recurso.dados.status_recurso" required>
+					<option value="" disabled selected>Escolha a opção</option>
+					<option value="1">Sim</option>
+					<option value="0">Não</option>
+				</select>
+				<label for="status_recurso">Deferimento do recurso</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12 m12 l12">
+				<i class="material-icons prefix">mode_edit</i>
+				<textarea data-uppercase id="resposta_recurso" name="resposta_recurso" data-ng-minlength="15"
+					class="materialize-textarea" data-ng-model="recurso.dados.resposta_recurso"
+					data-ng-class="{'invalid': formRecurso.resposta_recurso.$error.minlength}" msd-elastic
+					required></textarea>
+				<label for="resposta_recurso">Resposta do recurso</label>
+			</div>
+		</div>
+		<div class="row right-align col s12 m12 l12">
+			<button class="waves-effect waves-light btn blue darken-2" data-ng-disabled="formRecurso.$invalid"><i
+					class="material-icons right">send</i>Enviar</button>
+		</div>
+	</form>
+</div>

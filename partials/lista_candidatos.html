@@ -1,0 +1,92 @@
+<div class="box noprint">
+	<h5 class="center-align">Lista de Candidatos</h5>
+	<div class="row">
+		<div class="input-field col s12 m12 l5 push-l7">
+			<i class="material-icons prefix">search</i>
+			<input class="tooltipped" data-delay="50" data-position="bottom" data-tooltip="Digite o CPF do candidato"
+				id="query" name="query" type="text" data-ng-pattern="/^((?=\w\S)(\d){3}\.(\d){3}\.(\d){3}\-(\d){2})/"
+				maxlength="14" data-ng-model="lista.query" data-ng-change="lista.search()" data-uidoc>
+			<label for="query">Buscar Candidato (CPF)</label>
+		</div>
+	</div>
+	<table class="table highlight responsive-table centered" at-table at-paginated at-list="lista.candidatos"
+		at-config="lista.config">
+		<thead></thead>
+		<tbody>
+			<tr>
+				<td at-title="Inscrição" at-implicit at-attribute="numero_inscricao_candidato" width="5%"></td>
+				<td at-title="CPF" data-ng-bind="item.cpf_candidato | CPF" width="15%"></td>
+				<td at-title="Nome" at-implicit at-attribute="nome_candidato" width="30%"></td>
+				<td at-title="Cargo" at-implicit at-attribute="nome_cargo" width="30%"></td>
+				<td at-title="Ação" width="20%">
+					<a data-position="bottom" data-delay="50" data-tooltip="Clique visualizar o candidato"
+						data-ui-sref="menu.detalhe_candidato({cpf_candidato: item.cpf_candidato})"
+						class="btn-floating btn waves-effect waves-light add blue-grey lighten-1 tooltipped"><i
+							class="material-icons">contact_page</i></a>
+					<a data-ng-if="!item.status_avaliacao && lista.check === 2" data-position="bottom" data-delay="50"
+						data-tooltip="Clique reimprimir o protocolo"
+						data-ng-click="lista.printComprovante(item.cpf_candidato)"
+						class="btn-floating btn waves-effect waves-light add blue-grey lighten-1 tooltipped"><i
+							class="material-icons">print</i></a>
+					<a data-ng-if="lista.check === 1 && !item.status_avaliacao" data-position="bottom" data-delay="50"
+						data-tooltip="Clique avaliar o candidato"
+						data-ui-sref="menu.avaliacao_candidato({cpf_candidato: item.cpf_candidato})"
+						class="btn-floating btn waves-effect waves-light add blue-grey lighten-1 tooltipped"><i
+							class="material-icons">assignment</i></a>
+					<a data-ng-if="lista.check === 1 && (!item.id_candidato_recurso && item.status_avaliacao)" data-position="bottom" data-delay="50"
+						data-tooltip="Clique responder o recurso"
+						data-ui-sref="menu.recurso_candidato({cpf_candidato: item.cpf_candidato})"
+						class="btn-floating btn waves-effect waves-light add blue-grey lighten-1 tooltipped"><i
+							class="material-icons">note</i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<at-pagination class="right-align" at-list="lista.candidatos" at-config="lista.config"></at-pagination>
+</div>
+<!--Modal Resposta-->
+<div id="resposta" class="modal">
+	<div class="modal-content center-align">
+		<div class="row hide">
+			<img class="responsive-img img-protocolo" src="dist/img/pmg.png" alt="Prefeitura de Gravatá">
+			<h5><strong>COMPROVANTE DE INSCRIÇÃO</strong></h5>
+		</div>
+		<h5>Seleção Pública Simplificada</h5>
+		<h6><strong>Protocolo:</strong> {{lista.resposta.protocolo_candidato}}</h6>
+		<p class="left-align"><strong>Cargo:</strong> {{lista.resposta.nome_cargo}}</p>
+		<p class="left-align"><strong>Inscrição:</strong> {{lista.resposta.numero_inscricao_candidato}}</p>
+		<p class="left-align"><strong>Nome:</strong> {{lista.resposta.nome_candidato}}</p>
+		<p class="left-align"><strong>RG:</strong> {{lista.resposta.rg_candidato}} - <strong>Órgão Emissor:</strong>
+			{{lista.resposta.emissor_rg_candidato}} - <strong>CPF:</strong> {{lista.resposta.cpf_candidato | CPF}}</p>
+		<p class="justificado">Declaro concordar com as condições estabelecidas no Edital desta seleção, Anexo Único da
+			Portaria {{lista.resposta.portaria}}, de que são verdadeiras as inlistaações declaradas na inscrição.</p>
+		<br>
+		<p>Gravatá/PE, {{lista.resposta.data_inscricao_candidato | dataProtocolo}}</p>
+		<br>
+		<div class="row">
+			<div class="col s8 offset-s2">
+				<hr>
+				<p class="nome-linha">{{lista.resposta.nome_candidato}}</p>
+			</div>
+		</div>
+		<button class="modal-action modal-close btn btn-default noprint">Fechar</button>
+	</div>
+	<hr class="corte hide">
+	<div class="modal-content center-align hide">
+		<div class="row hide">
+			<img class="responsive-img img-protocolo" src="dist/img/pmg.png" alt="Prefeitura de Gravatá">
+			<h5><strong>COMPROVANTE DE INSCRIÇÃO</strong></h5>
+		</div>
+		<h5>Seleção Pública Simplificada</h5>
+		<h6><strong>Protocolo:</strong> {{lista.resposta.protocolo_candidato}}</h6>
+		<p class="left-align"><strong>Cargo:</strong> {{lista.resposta.nome_cargo}}</p>
+		<p class="left-align"><strong>Inscrição:</strong> {{lista.resposta.numero_inscricao_candidato}}</p>
+		<p class="left-align"><strong>Nome:</strong> {{lista.resposta.nome_candidato}}</p>
+		<p class="left-align"><strong>RG:</strong> {{lista.resposta.rg_candidato}} - <strong>Órgão Emissor:</strong>
+			{{lista.resposta.emissor_rg_candidato}} - <strong>CPF:</strong> {{lista.resposta.cpf_candidato | CPF}}</p>
+		<p class="justificado">Declaro concordar com as condições estabelecidas no Edital desta seleção, Anexo Único da
+			Portaria {{lista.resposta.portaria}}, de que são verdadeiras as inlistaações declaradas na inscrição.</p>
+		<br>
+		<p>Gravatá/PE, {{lista.resposta.data_inscricao_candidato | dataProtocolo}}</p>
+	</div>
+</div>

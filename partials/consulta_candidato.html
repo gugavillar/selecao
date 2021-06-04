@@ -1,0 +1,88 @@
+<div class="container">
+	<h5 class="center-align noprint">Consulta de detalhamento de resultado</h5>
+	<div class="row noprint">
+		<form name="formCosulta" data-ng-submit="consulta.buscar()">
+			<div class="row">
+				<div class="input-field col s12 m6 l6 offset-m3 offset-l3">
+					<i class="material-icons prefix">search</i>
+					<input id="cpf_candidato" name="cpf_candidato" data-ng-minlength="14"
+						data-ng-pattern="/^((?=\w\S)(\d){3}\.(\d){3}\.(\d){3}\-(\d){2})/" maxlength="14" type="text"
+						data-ng-class="{'invalid': formCosulta.cpf_candidato.$error.minlength || formCosulta.cpf_candidato.$error.pattern}"
+						data-ng-model="consulta.dados.cpf_candidato" data-uidoc required>
+					<label for="cpf_candidato">Digite o CPF</label>
+				</div>
+			</div>
+			<div class="row col s6 m6 l6 offset-s2 offset-m3 offset-l3 right-align">
+				<button class="waves-effect waves-light btn blue darken-2 resultado-button"
+					data-ng-disabled="formCosulta.$invalid">Buscar</button>
+			</div>
+		</form>
+	</div>
+	<div data-ng-if="consulta.candidato" class="row">
+		<h5 class="center-align">Dados do Candidato</h5>
+		<div class="row">
+			<p><strong>Inscrição:</strong> {{consulta.candidato.numero_inscricao_candidato}}</p>
+			<p><strong>Cargo:</strong> {{consulta.candidato.nome_cargo}}</p>
+			<p><strong>Nome:</strong> {{consulta.candidato.nome_candidato}}</p>
+			<p><strong>Gênero:</strong> {{consulta.candidato.genero_candidato | Genero}} <strong>Estado Civil:</strong>
+				{{consulta.candidato.estado_civil_candidato | EstadoCivil}} <strong>Data de Nascimento</strong>
+				{{consulta.candidato.data_nascimento_candidato | date:'dd/MM/yyyy'}}</p>
+			<p><strong>RG:</strong> {{consulta.candidato.rg_candidato}} <strong>Órgão Emissor:</strong>
+				{{consulta.candidato.emissor_rg_candidato}} <strong>CPF:</strong> {{consulta.candidato.cpf_candidato |
+				CPF}}</p>
+			<p><strong>Título de Eleitor:</strong> {{consulta.candidato.titulo_candidato | Titulo}}
+				<strong>Zona:</strong>
+				{{consulta.candidato.zona_candidato}} <strong>Seção:</strong> {{consulta.candidato.secao_candidato}}</p>
+			<p><strong>Telefone:</strong> {{consulta.candidato.telefone_um_candidato | Telefone}}<span
+					data-ng-if="consulta.candidato.telefone_dois_candidato">
+					{{consulta.candidato.telefone_dois_candidato | Telefone}}</span> <span
+					data-ng-if="consulta.candidato.email_candidato"><strong>Email:</strong>
+					{{consulta.candidato.email_candidato}}</span></p>
+			<p><strong>CEP:</strong> {{consulta.candidato.cep_candidato | Cep}} <strong>Endereço:</strong>
+				{{consulta.candidato.logradouro_candidato}} <strong>N˚</strong> {{consulta.candidato.numero_candidato}}
+			</p>
+			<p><strong>Cidade:</strong> {{consulta.candidato.cidade_candidato}} <strong>Estado:</strong>
+				{{consulta.candidato.estado_candidato}}</p>
+			<p><strong>Bairro:</strong> {{consulta.candidato.bairro_candidato}} <span
+					data-ng-if="consulta.candidato.complemento_candidato"><strong>Complemento:</strong>
+					{{consulta.candidato.complemento_candidato}}</span></p>
+			<p><strong>Pai:</strong> {{consulta.candidato.pai_candidato}}</p>
+			<p><strong>Mãe:</strong> {{consulta.candidato.mae_candidato}}</p>
+			<p><strong>Instrução:</strong> {{consulta.candidato.instrucao_candidato | Instrucao}} <strong>Pessoa com
+					deficiência:</strong>
+				{{consulta.candidato.deficiente_candidato | Deficiencia}}</p>
+		</div>
+		<div class="row" data-ng-if="consulta.candidato.status_avaliacao === '2'">
+			<h5 class="center-align">Dados da Avaliação</h5>
+			<table class="highlight responsive-table centered">
+				<thead>
+					<tr>
+						<th>Tempo de Exeperiência</th>
+						<th>Cursos</th>
+						<th>Doutorado</th>
+						<th>Mestrado</th>
+						<th>Pós Graduação</th>
+						<th>Jurado</th>
+						<th>Pontuação</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-ng-bind="consulta.candidato.tempo_experiencia_avaliacao | Tempo"></td>
+						<td data-ng-bind="consulta.candidato.cursos_avaliacao"></td>
+						<td data-ng-bind="consulta.candidato.doutorado_avaliacao | True"></td>
+						<td data-ng-bind="consulta.candidato.mestrado_avaliacao | True"></td>
+						<td data-ng-bind="consulta.candidato.pos_avaliacao | True"></td>
+						<td data-ng-bind="consulta.candidato.jurado_avaliacao | True"></td>
+						<td data-ng-bind="consulta.candidato.pontuacao_avaliacao"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="row" data-ng-if="consulta.candidato.status_avaliacao === '1'">
+			<h5 class="center-align">Dados da Avaliação</h5>
+			<p class="center-align"><strong>O candidato não preencheu os requisitos mínimos exigidos no edital</strong>
+			</p>
+		</div>
+	</div>
+</div>

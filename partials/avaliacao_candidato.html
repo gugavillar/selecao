@@ -1,0 +1,89 @@
+<div class="container noprint">
+	<h5 class="center-align">Avaliar Candidato</h5>
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<p><strong>Inscrição:</strong> {{avaliacao.candidato.numero_inscricao_candidato}}</p>
+			<p><strong>Cargo:</strong> {{avaliacao.candidato.nome_cargo}}</p>
+			<p><strong>Nome:</strong> {{avaliacao.candidato.nome_candidato}} <strong>CPF:</strong>
+				{{avaliacao.candidato.cpf_candidato |
+				CPF}}</p>
+			<hr />
+		</div>
+	</div>
+	<div data-ng-if="!avaliacao.show" class="row">
+		<h6 class="center-align">O candidato cumpre os requisitos do edital e os requisitos exigidos para o cargo a qual
+			concorre?</h6>
+		<div class="col s6 m6 l6 right-align">
+			<button data-ng-click="avaliacao.avaliacao()" class="waves-effect waves-light btn red darken-2">Não</button>
+		</div>
+		<div class="col s6 m6 l6 left-align">
+			<button data-ng-click="avaliacao.avaliacao(1)"
+				class="waves-effect waves-light btn blue darken-2">Sim</button>
+		</div>
+	</div>
+	<form data-ng-if="avaliacao.show" name="formAvaliacao" data-ng-submit="avaliacao.send()">
+		<div class="row">
+			<div class="input-field col s12 m4 l4">
+				<select id="pos_avaliacao" name="pos_avaliacao" data-ng-model="avaliacao.dados.pos_avaliacao" required>
+					<option value="" disabled selected>Escolha a opção</option>
+					<option value="1">Sim</option>
+					<option value="0">Não</option>
+				</select>
+				<label for="pos_avaliacao">Pós graduação</label>
+			</div>
+			<div class="input-field col s12 m4 l4">
+				<select id="mestrado_avaliacao" name="mestrado_avaliacao"
+					data-ng-model="avaliacao.dados.mestrado_avaliacao" required>
+					<option value="" disabled selected>Escolha a opção</option>
+					<option value="1">Sim</option>
+					<option value="0">Não</option>
+				</select>
+				<label for="mestrado_avaliacao">Mestrado</label>
+			</div>
+			<div class="input-field col s12 m4 l4">
+				<select id="doutorado_avaliacao" name="doutorado_avaliacao"
+					data-ng-model="avaliacao.dados.doutorado_avaliacao" required>
+					<option value="" disabled selected>Escolha a opção</option>
+					<option value="1">Sim</option>
+					<option value="0">Não</option>
+				</select>
+				<label for="doutorado_avaliacao">Doutorado</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12 m6 l6">
+				<input id="tempo_experiencia_avaliacao" name="tempo_experiencia_avaliacao" type="text" maxlength="3"
+					data-ng-model="avaliacao.dados.tempo_experiencia_avaliacao" data-ng-pattern="/^(2|(\d){2,3})$/"
+					data-ng-minlength="1"
+					data-ng-class="{'invalid': formAvaliacao.tempo_experiencia_avaliacao.$error.minlength || formAvaliacao.tempo_experiencia_avaliacao.$error.pattern}"
+					data-uinum>
+				<label for="tempo_experiencia_avaliacao">Tempo de Experiência em Mês</label>
+			</div>
+			<div class="input-field col s12 m6 l6">
+				<input id="cursos_avaliacao" name="cursos_avaliacao" type="text" maxlength="1"
+					data-ng-model="avaliacao.dados.cursos_avaliacao" data-ng-pattern="avaliacao.pattern"
+					data-ng-minlength="1"
+					data-ng-class="{'invalid': formAvaliacao.cursos_avaliacao.$error.minlength || formAvaliacao.cursos_avaliacao.$error.pattern}"
+					data-uinum>
+				<label for="cursos_avaliacao">Quantidade total de cursos</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12 m6 l6 offset-m3 offset-l3">
+				<select id="jurado_avaliacao" name="jurado_avaliacao" data-ng-model="avaliacao.dados.jurado_avaliacao"
+					required>
+					<option value="" disabled selected>Escolha a opção</option>
+					<option value="1">Sim</option>
+					<option value="0">Não</option>
+				</select>
+				<label for="jurado_avaliacao">Jurado - Lei Federal n˚ 11.689/2008</label>
+			</div>
+		</div>
+		<div class="row right-align">
+			<div class="col s12 m12 l12">
+				<button class="waves-effect waves-light btn blue darken-2" data-ng-disabled="formAvaliacao.$invalid"><i
+						class="material-icons right">send</i>Enviar</button>
+			</div>
+		</div>
+	</form>
+</div>

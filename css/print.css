@@ -1,0 +1,61 @@
+@media print {
+	@page {
+		size: A4;
+		margin: 1.3cm 0.5cm 1.3cm 0.5cm;
+	}
+	html, body {
+		width: 210mm;
+		height: 280mm;
+		font-size: 12px;
+		box-shadow: none;
+		display: block;
+	}
+	main {
+		padding-left: 0;
+	}
+	.hide {
+		display: block !important;
+	}
+	.noprint {
+		display: none;
+	}
+	div.modal {
+		width: 90%;
+		box-shadow: none;
+		position: absolute;
+		overflow-y: unset;
+		left: 0;
+		top: 0 !important;
+	}
+	div.modal-content {
+		padding: 5px !important;
+	}
+	div.modal-content>p {
+		font-size: 14pt;
+	}
+	div.modal-content>h5, div.row>h5 {
+		font-size: 20pt;
+	}
+	p.nome-linha {
+		font-size: 14pt;
+	}
+	hr {
+		border-top: 2px solid black;
+	}
+	hr.corte {
+		border-top: 1.5px black;
+		border-style: dashed;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	div>img.img-protocolo {
+		width: 250px;
+	}
+	table>thead>tr>th {
+		font-size: 7pt;
+	}
+	table>tbody>tr>td {
+		font-size: 8pt;
+		padding: 2px;
+	}
+}

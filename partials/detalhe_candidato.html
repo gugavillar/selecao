@@ -1,0 +1,64 @@
+<div class="container">
+	<h5 class="center-align">Dados do Candidato</h5>
+	<div class="row">
+		<p><strong>Inscrição:</strong> {{detalhe.candidato.numero_inscricao_candidato}}</p>
+		<p><strong>Cargo:</strong> {{detalhe.candidato.nome_cargo}}</p>
+		<p><strong>Nome:</strong> {{detalhe.candidato.nome_candidato}}</p>
+		<p><strong>Gênero:</strong> {{detalhe.candidato.genero_candidato | Genero}} <strong>Estado Civil:</strong>
+			{{detalhe.candidato.estado_civil_candidato | EstadoCivil}} <strong>Data de Nascimento</strong>
+			{{detalhe.candidato.data_nascimento_candidato | date:'dd/MM/yyyy'}}</p>
+		<p><strong>RG:</strong> {{detalhe.candidato.rg_candidato}} <strong>Órgão Emissor:</strong>
+			{{detalhe.candidato.emissor_rg_candidato}} <strong>CPF:</strong> {{detalhe.candidato.cpf_candidato | CPF}}
+		</p>
+		<p><strong>Título de Eleitor:</strong> {{detalhe.candidato.titulo_candidato | Titulo}} <strong>Zona:</strong>
+			{{detalhe.candidato.zona_candidato}} <strong>Seção:</strong> {{detalhe.candidato.secao_candidato}}</p>
+		<p><strong>Telefone:</strong> {{detalhe.candidato.telefone_um_candidato | Telefone}}<span
+				data-ng-if="detalhe.candidato.telefone_dois_candidato"> {{detalhe.candidato.telefone_dois_candidato |
+				Telefone}}</span> <span data-ng-if="detalhe.candidato.email_candidato"><strong>Email:</strong>
+				{{detalhe.candidato.email_candidato}}</span></p>
+		<p><strong>CEP:</strong> {{detalhe.candidato.cep_candidato | Cep}} <strong>Endereço:</strong>
+			{{detalhe.candidato.logradouro_candidato}} <strong>N˚</strong> {{detalhe.candidato.numero_candidato}}</p>
+		<p><strong>Cidade:</strong> {{detalhe.candidato.cidade_candidato}} <strong>Estado:</strong>
+			{{detalhe.candidato.estado_candidato}}
+		</p>
+		<p><strong>Bairro:</strong> {{detalhe.candidato.bairro_candidato}} <span
+				data-ng-if="detalhe.candidato.complemento_candidato"><strong>Complemento:</strong>
+				{{detalhe.candidato.complemento_candidato}}</span></p>
+		<p><strong>Pai:</strong> {{detalhe.candidato.pai_candidato}}</p>
+		<p><strong>Mãe:</strong> {{detalhe.candidato.mae_candidato}}</p>
+		<p><strong>Instrução:</strong> {{detalhe.candidato.instrucao_candidato | Instrucao}} <strong>Pessoa com
+				deficiência:</strong>
+			{{detalhe.candidato.deficiente_candidato | Deficiencia}}</p>
+	</div>
+	<div class="row" data-ng-if="detalhe.candidato.status_avaliacao === '2'">
+		<h5 class="center-align">Dados da Avaliação</h5>
+		<table class="highlight responsive-table centered">
+			<thead>
+				<tr>
+					<th>Tempo de Exeperiência</th>
+					<th>Cursos</th>
+					<th>Doutorado</th>
+					<th>Mestrado</th>
+					<th>Pós Graduação</th>
+					<th>Jurado</th>
+					<th>Pontuação</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td data-ng-bind="detalhe.candidato.tempo_experiencia_avaliacao | Tempo"></td>
+					<td data-ng-bind="detalhe.candidato.cursos_avaliacao"></td>
+					<td data-ng-bind="detalhe.candidato.doutorado_avaliacao | True"></td>
+					<td data-ng-bind="detalhe.candidato.mestrado_avaliacao | True"></td>
+					<td data-ng-bind="detalhe.candidato.pos_avaliacao | True"></td>
+					<td data-ng-bind="detalhe.candidato.jurado_avaliacao | True"></td>
+					<td data-ng-bind="detalhe.candidato.pontuacao_avaliacao"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row" data-ng-if="detalhe.candidato.status_avaliacao === '1'">
+		<h5 class="center-align">Dados da Avaliação</h5>
+		<p class="center-align"><strong>O candidato não preencheu os requisitos mínimos exigidos no edital</strong></p>
+	</div>
+</div>

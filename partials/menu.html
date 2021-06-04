@@ -1,0 +1,101 @@
+<ul id="slide-out" class="sidenav sidenav-fixed noprint">
+	<li>
+		<div class="user-view center-align">
+			<a><img class="circle" src="dist/img/brasao.png"></a>
+			<a><span class="name">Prefeitura de Gravatá</span></a>
+			<a><span class="email">Seleção Pública Simplificada</span></a>
+		</div>
+	</li>
+	<li>
+		<div class="divider"></div>
+	</li>
+	<li data-ng-if="menu.check === 0">
+		<a class="collapsible-header waves-effect sidenav-close" data-ui-sref="menu.dashboard">Dashboard</a>
+	</li>
+	<li data-ng-if="menu.check === 0">
+		<div class="divider"></div>
+	</li>
+	<li>
+		<ul class="collapsible">
+			<li>
+				<a class="collapsible-header waves-effect">Candidatos<i
+						class="material-icons right">arrow_drop_down</i></a>
+				<div class="collapsible-body">
+					<ul>
+						<li data-ng-if="menu.check === 2" class="sidenav-close"><a
+								data-ui-sref="menu.inscricao_candidato">Novo Candidato</a></li>
+						<li class="sidenav-close"><a data-ui-sref="menu.lista_candidatos">Listar Candidatos</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</li>
+	<li data-ng-if="menu.check === 0">
+		<div class="divider"></div>
+	</li>
+	<li data-ng-if="menu.check === 0">
+		<ul class="collapsible">
+			<li>
+				<a class="collapsible-header waves-effect">Relatórios & Resultados<i
+						class="material-icons right">arrow_drop_down</i></a>
+				<div class="collapsible-body">
+					<ul>
+						<li class="sidenav-close"><a data-ui-sref="menu.relatorio_inscritos">Relatório Inscritos</a>
+						</li>
+						<li class="sidenav-close"><a data-ui-sref="menu.relatorio_recurso">Relatório Recursos</a></li>
+						<li class="sidenav-close"><a data-ui-sref="menu.resultado_preliminar">Resultado Preliminar</a>
+						</li>
+						<li class="sidenav-close"><a data-ui-sref="menu.resultado_final">Resultado Final</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</li>
+	<li data-ng-if="menu.check === 0">
+		<div class="divider"></div>
+	</li>
+	<li data-ng-if="menu.check === 0">
+		<ul class="collapsible">
+			<li>
+				<a class="collapsible-header waves-effect">Usuários<i
+						class="material-icons right">arrow_drop_down</i></a>
+				<div class="collapsible-body">
+					<ul>
+						<li class="sidenav-close"><a data-ui-sref="menu.novo_usuario">Novo Usuário</a></li>
+						<li class="sidenav-close"><a data-ui-sref="menu.lista_usuarios">Listar Usuários</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</li>
+	<li data-ng-if="menu.check === 0">
+		<div class="divider"></div>
+	</li>
+	<li data-ng-if="menu.check === 0">
+		<ul class="collapsible">
+			<li>
+				<a class="collapsible-header waves-effect">Cargos<i class="material-icons right">arrow_drop_down</i></a>
+				<div class="collapsible-body">
+					<ul>
+						<li class="sidenav-close"><a data-ui-sref="menu.novo_cargo">Novo Cargo</a></li>
+						<li class="sidenav-close"><a data-ui-sref="menu.lista_cargos">Listar Cargos</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<div class="divider"></div>
+	</li>
+	<li>
+		<a class="collapsible-header waves-effect sidenav-close" data-ng-click="menu.logout()">Logout<i
+				class="material-icons right">exit_to_app</i></a>
+	</li>
+</ul>
+<nav class="noprint">
+	<div class="nav-wrapper container">
+		<a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i
+				class="material-icons">menu</i></a>
+	</div>
+</nav>
+<div class="row" data-ui-view></div>

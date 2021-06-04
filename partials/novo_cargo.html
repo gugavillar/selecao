@@ -1,0 +1,28 @@
+<div class="container noprint">
+	<h5 class="center-align">Cadastrar Cargo</h5>
+	<form name="formCargo" data-ng-submit="cargo.send()">
+		<div class="row">
+			<div class="input-field col s12 m6 l6">
+				<input id="nome_cargo" name="nome_cargo" maxlength="200" data-ng-minlength="10"
+					data-ng-pattern="/^((?=\w\S)([A-Z\.\u00C0-\u00FF\s]{10,200}))$/" type="text"
+					data-ng-class="{'invalid': formCargo.nome_cargo.$error.minlength || formCargo.nome_cargo.$error.pattern}"
+					data-ng-model="cargo.dados.nome_cargo" required data-uppercase>
+				<label for="nome_cargo">Cargo</label>
+			</div>
+			<div class="input-field col s12 m6 l6">
+				<select id="avaliacao_cargo" name="avaliacao_cargo" data-ng-model="cargo.dados.avaliacao_cargo"
+					required>
+					<option value="" disabled selected>Escolha a opção</option>
+					<option value="1">Fundamental</option>
+					<option value="2">Médio</option>
+					<option value="3">Superior</option>
+				</select>
+				<label for="avaliacao_cargo">Tipo Avaliação</label>
+			</div>
+		</div>
+		<div class="row right-align col s12 m12 l12">
+			<button class="waves-effect waves-light btn blue darken-2" data-ng-disabled="formCargo.$invalid"><i
+					class="material-icons right">send</i>Enviar</button>
+		</div>
+	</form>
+</div>

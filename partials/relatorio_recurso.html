@@ -1,0 +1,21 @@
+<div class="box">
+	<h5 class="center-align">Relatório dos recusos da Seleção Pública Simplificada</h5>
+	<div class="col s12 m12 l12">
+		<table class="highlight responsive-table centered">
+			<thead>
+				<tr>
+					<th>Inscrição</th>
+					<th>Resposta</th>
+					<th>Observação</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="item in relatorio.recursos">
+					<td data-ng-bind="item.numero_inscricao_candidato" width="20%"></td>
+					<td data-ng-bind="item.status_recurso | statusRecurso" width="20%"></td>
+					<td data-ng-bind="item.resposta_recurso" width="60%"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
