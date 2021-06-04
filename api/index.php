@@ -424,7 +424,7 @@ $app->group('/usuarios', function () use ($app) {
 			$stmt->bindParam('name', $data['name'], PDO::PARAM_STR);
 			$stmt->bindParam('user', $data['user'], PDO::PARAM_STR);
 			$stmt->bindParam('type', $data['type'], PDO::PARAM_INT);
-			$stmt->bindParam('pass', $data['pass'], PDO::PARAM_INT);
+			$stmt->bindParam('pass', $data['pass']);
 			$stmt->execute();
 			$data['id'] = $db->lastInsertId();
 			$db = null;
